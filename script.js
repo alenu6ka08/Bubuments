@@ -196,6 +196,8 @@ let complimentCount = 0;
 let favoriteCount = 0;
 let currentCompliment = null;
 let history = [];
+let complimentsToday = 0;
+let lastComplimentDate = null;
 
 // DOM elements
 const complimentBtn = document.getElementById('complimentBtn');
@@ -204,6 +206,7 @@ const complimentTranslation = document.getElementById('complimentTranslation');
 const complimentImage = document.getElementById('complimentImage');
 const complimentCard = document.getElementById('complimentCard');
 const complimentCountEl = document.getElementById('complimentCount');
+const remainingCountEl = document.getElementById('remainingCount');
 const favoriteCountEl = document.getElementById('favoriteCount');
 const favoriteBtn = document.getElementById('favoriteBtn');
 const shareBtn = document.getElementById('shareBtn');
@@ -216,6 +219,7 @@ const historyList = document.getElementById('historyList');
 function init() {
     loadStats();
     loadHistory();
+    loadDailyStats();
     setupEventListeners();
 }
 
@@ -235,8 +239,55 @@ function setupEventListeners() {
     });
 }
 
+// Check daily compliment limit
+function checkDailyLimit() {
+    const today = new Date().toDateString();
+    
+    // Reset counter if it's a new day
+    if (lastComplimentDate !== today) {
+        complimentsToday = 0;
+        lastComplimentDate = today;
+        saveDailyStats();
+    }
+    
+    if (complimentsToday >= 2) {
+        // Show nice modal instead of alert
+        const modal = document.createElement('div');
+        modal.className = 'limit-modal';
+        modal.innerHTML = `
+            <div class="limit-content">
+                <h3>💕 Daily Limit Reached 💕</h3>
+                <p>You've received 2 compliments today!</p>
+                <p>Come back tomorrow for more sweet messages from Bubu & Dudu!</p>
+                <button onclick="this.parentElement.parentElement.remove()" style="background: #FF6B6B; color: white; border: none; padding: 10px 20px; border-radius: 20px; cursor: pointer;">Got it!</button>
+            </div>
+        `;
+        modal.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        `;
+        document.body.appendChild(modal);
+        return false;
+    }
+    
+    return true;
+}
+
 // Get a new random compliment
 function getNewCompliment() {
+    // Check daily limit first
+    if (!checkDailyLimit()) {
+        return;
+    }
+    
     const categories = Object.keys(compliments);
     const randomCategory = categories[Math.floor(Math.random() * categories.length)];
     const categoryCompliments = compliments[randomCategory];
@@ -248,6 +299,10 @@ function getNewCompliment() {
         timestamp: new Date().toISOString()
     };
     
+    // Update daily counter
+    complimentsToday++;
+    saveDailyStats();
+    
     displayCompliment(currentCompliment);
     updateStats();
     addToHistory(currentCompliment);
@@ -256,6 +311,9 @@ function getNewCompliment() {
     complimentCard.classList.remove('fade-in');
     void complimentCard.offsetWidth; // Trigger reflow
     complimentCard.classList.add('fade-in');
+    
+    // Update button to show remaining
+    updateButtonText();
 }
 
 // Display compliment
@@ -326,6 +384,25 @@ function updateStats() {
     complimentCount++;
     complimentCountEl.textContent = complimentCount;
     saveStats();
+}
+
+// Update button text to show remaining compliments
+function updateButtonText() {
+    const remaining = 2 - complimentsToday;
+    remainingCountEl.textContent = remaining;
+    
+    if (remaining === 1) {
+        complimentBtn.textContent = "1 compliment left today!";
+        complimentBtn.style.background = 'linear-gradient(135deg, #FFA500 0%, #FFB347 100%)'; // Orange warning
+    } else if (remaining === 0) {
+        complimentBtn.textContent = "Daily limit reached!";
+        complimentBtn.style.background = 'linear-gradient(135deg, #CCCCCC 0%, #999999 100%)'; // Gray disabled
+        complimentBtn.disabled = true;
+    } else {
+        complimentBtn.textContent = "Find out what Bubu says to you today";
+        complimentBtn.style.background = 'linear-gradient(135deg, #FF6B6B 0%, #FF8E8E 100%)'; // Normal pink
+        complimentBtn.disabled = false;
+    }
 }
 
 // Add to favorites
@@ -409,6 +486,27 @@ function hideHistory() {
 function saveStats() {
     localStorage.setItem('complimentCount', complimentCount);
     localStorage.setItem('favoriteCount', favoriteCount);
+}
+
+// Save daily stats to localStorage
+function saveDailyStats() {
+    localStorage.setItem('complimentsToday', complimentsToday);
+    localStorage.setItem('lastComplimentDate', lastComplimentDate);
+}
+
+// Load daily stats from localStorage
+function loadDailyStats() {
+    complimentsToday = parseInt(localStorage.getItem('complimentsToday') || '0');
+    lastComplimentDate = localStorage.getItem('lastComplimentDate');
+    
+    const today = new Date().toDateString();
+    if (lastComplimentDate !== today) {
+        complimentsToday = 0;
+        lastComplimentDate = today;
+        saveDailyStats();
+    }
+    
+    updateButtonText();
 }
 
 // Load statistics from localStorage
