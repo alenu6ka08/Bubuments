@@ -160,13 +160,26 @@ const bubuDuduImages = {
     ]
 };
 
-// Working Bubu & Dudu images (direct URLs)
+// Local Bubu & Dudu images (downloaded from official source)
 const workingBubuDuduImages = [
-    "https://i.pinimg.com/originals/2d/3b/12/2d3b12f99e7c5c7b3b6a5d7f5e9a5a6f.gif",
-    "https://i.pinimg.com/originals/5f/8e/4c/5f8e4cf6a8b6c6d6a6d7c8e9f0a6b1a.gif", 
-    "https://i.pinimg.com/originals/7c/4f/5e/7c4f5e8b9c5d6e8f1a2b3c4d5e6f7g8.gif",
-    "https://i.pinimg.com/originals/9a/6b/7c/9a6b7c8d5e6f7a8b9c1d2e3f4g5h6i7.gif",
-    "https://c.tenor.com/JhLx1hAq1rUAAAAC/bubu-dudu-love.gif"
+    "assets/images/bubu-dudu-1.webp",
+    "assets/images/bubu-dudu-2.webp", 
+    "assets/images/bubu-dudu-3.webp",
+    "assets/images/bubu-dudu-4.webp",
+    "assets/images/bubu-dudu-5.webp",
+    "assets/images/bubu-dudu-6.webp",
+    "assets/images/bubu-dudu-7.webp",
+    "assets/images/bubu-dudu-8.webp",
+    "assets/images/bubu-dudu-9.webp",
+    "assets/images/bubu-dudu-10.webp",
+    "assets/images/bubu-dudu-11.webp",
+    "assets/images/bubu-dudu-12.webp",
+    "assets/images/bubu-dudu-13.webp",
+    "assets/images/bubu-dudu-14.webp",
+    "assets/images/bubu-dudu-15.webp",
+    "assets/images/bubu-dudu-16.webp",
+    "assets/images/bubu-dudu-17.webp",
+    "assets/images/bubu-dudu-18.webp"
 ];
 
 // Fallback images (online placeholders)
@@ -289,7 +302,7 @@ function displayCompliment(compliment) {
 function updateComplimentImage(category) {
     let imageUrl;
     
-    // Always use working Bubu & Dudu images
+    // Always use local Bubu & Dudu images (18 stickers total)
     const images = workingBubuDuduImages;
     imageUrl = images[Math.floor(Math.random() * images.length)];
     
@@ -419,5 +432,19 @@ function loadHistory() {
     }
 }
 
+// Set initial title image
+function setTitleImage() {
+    const titleImagePath = 'assets/images/title-image.png';
+    complimentImage.src = titleImagePath;
+    
+    complimentImage.onerror = function() {
+        // Fallback to first sticker if title image doesn't exist
+        this.src = 'assets/images/bubu-dudu-1.webp';
+    };
+}
+
 // Initialize the app when DOM is loaded
-document.addEventListener('DOMContentLoaded', init);
+document.addEventListener('DOMContentLoaded', () => {
+    setTitleImage();
+    init();
+});
