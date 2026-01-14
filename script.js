@@ -160,13 +160,13 @@ const bubuDuduImages = {
     ]
 };
 
-// Local Bubu & Dudu images (SVG base64)
-const localBubuDuduImages = [
-    "assets/images/bubu-dudu-1.svg",
-    "assets/images/bubu-dudu-2.svg", 
-    "assets/images/bubu-dudu-3.svg",
-    "assets/images/bubu-dudu-4.svg",
-    "assets/images/bubu-dudu-5.svg"
+// Working Bubu & Dudu images (direct URLs)
+const workingBubuDuduImages = [
+    "https://i.pinimg.com/originals/2d/3b/12/2d3b12f99e7c5c7b3b6a5d7f5e9a5a6f.gif",
+    "https://i.pinimg.com/originals/5f/8e/4c/5f8e4cf6a8b6c6d6a6d7c8e9f0a6b1a.gif", 
+    "https://i.pinimg.com/originals/7c/4f/5e/7c4f5e8b9c5d6e8f1a2b3c4d5e6f7g8.gif",
+    "https://i.pinimg.com/originals/9a/6b/7c/9a6b7c8d5e6f7a8b9c1d2e3f4g5h6i7.gif",
+    "https://c.tenor.com/JhLx1hAq1rUAAAAC/bubu-dudu-love.gif"
 ];
 
 // Fallback images (online placeholders)
@@ -247,6 +247,12 @@ function getNewCompliment() {
 
 // Display compliment
 function displayCompliment(compliment) {
+    if (!compliment) {
+        complimentText.textContent = "Click the button to get your first compliment!";
+        complimentTranslation.style.display = 'none';
+        return;
+    }
+    
     complimentText.textContent = compliment.text;
     
     // Show translation for Kyrgyz compliments
@@ -283,19 +289,19 @@ function displayCompliment(compliment) {
 function updateComplimentImage(category) {
     let imageUrl;
     
-    // Always use local Bubu & Dudu images first (guaranteed to work)
-    const localImages = localBubuDuduImages;
-    imageUrl = localImages[Math.floor(Math.random() * localImages.length)];
+    // Always use working Bubu & Dudu images
+    const images = workingBubuDuduImages;
+    imageUrl = images[Math.floor(Math.random() * images.length)];
     
     // Add error handling for image loading
     complimentImage.onerror = function() {
-        console.log('Local image failed to load, using online fallback');
+        console.log('Image failed to load, using fallback');
         this.src = fallbackImages[Math.floor(Math.random() * fallbackImages.length)];
         
         // If fallback also fails, use a data URI
         this.onerror = function() {
             console.log('All images failed, using data URI');
-            this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iI0ZGNkI2QyIvPgogIDx0ZXh0IHg9IjE1MCIgeT0iMTUwIiBmb250LWZhbWlseT0iUXVpY2tzYW5kIiBmb250LXNpemU9IjI0IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkJ1YnUgJiBEdWR1PC90ZXh0PgogIDx0ZXh0IHg9IjE1MCIgeT0iMTgwIiBmb250LWZhbWlseT0iUXVpY2tzYW5kIiBmb250LXNpemU9IjE2IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPuOAk+OAkSA8L3RleHQ+Cjwvc3ZnPg==';
+            this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iI0ZGNkI2QyIvPgogIDx0ZXh0IHg9IjE1MCIgeT0iMTUwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5CdWJ1ICYgRHVkdTwvdGV4dD4KICA8dGV4dCB4PSIxNTAiIHk9IjE4MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE2IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+4oCmIOKAnjwvdGV4dD4KPC9zdmc+';
         };
     };
     

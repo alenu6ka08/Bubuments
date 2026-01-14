@@ -1,1 +1,11 @@
-data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iI0ZGQzBDSiIvPgogIDxjaXJjbGUgY3g9IjEwMCIgY3k9IjE1MCIgcj0iNDAiIGZpbGw9IiM4QjQ1MTMiLz4KICA8Y2lyY2xlIGN4PSIyMDAiIGN5PSIxNTAiIHI9IjQwIiBmaWxsPSIjRkZGRkZGIi8+CiAgPGNpcmNsZSBjeD0iMTAwIiBjeT0iMTMwIiByPSI1IiBmaWxsPSJibGFjayIvPgogIDxjaXJjbGUgY3g9IjIwMCIgY3k9IjEzMCIgcj0iNSIgZmlsbD0iYmxhY2siLz4KICA8cGF0aCBkPSJNMTAwIDE3MCBRIDkwIDE4MCAxMDAgMTkwIFQgMTEwIDE4MCIgc3Ryb2tlPSJibGFjayIgc3Ryb2tlLXdpZHRoPSIyIiBmaWxsPSJub25lIi8+CiAgPHBhdGggZD0iTTIwMCAxNzAgUSAxOTAgMTgwIDIwMCAxOTAgVCAyMTAgMTgwIiBzdHJva2U9ImJsYWNrIiBzdHJva2Utd2lkdGg9IjIiIGZpbGw9Im5vbmUiLz4KICA8dGV4dCB4PSIxNTAiIHk9IjI1MCIgZm9udC1mYW1pbHk9IlF1aWNrc2FuZCIgZm9udC1zaXplPSIxOCIgZmlsbD0iI0ZGNkI2QyIgdGV4dC1hbmNob3I9Im1pZGRsZSI+4oCmIOKAnjwvdGV4dD4KPC9zdmc+
+<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="300" height="300" fill="#FFC0CB"/>
+  <circle cx="80" cy="120" r="40" fill="#8B4513"/>
+  <circle cx="220" cy="120" r="40" fill="white"/>
+  <circle cx="80" cy="105" r="5" fill="black"/>
+  <circle cx="220" cy="105" r="5" fill="black"/>
+  <path d="M80 135 Q 70 145 80 155 T 90 145" stroke="black" stroke-width="2" fill="none"/>
+  <path d="M220 135 Q 210 145 220 155 T 230 145" stroke="black" stroke-width="2" fill="none"/>
+  <path d="M80 160 Q 90 180 150 160 Q 210 180 220 160" stroke="#FF69B4" stroke-width="4" fill="none"/>
+  <text x="150" y="220" font-family="Arial" font-size="18" fill="white" text-anchor="middle">💕</text>
+</svg>

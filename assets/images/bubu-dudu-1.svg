@@ -1,1 +1,11 @@
-data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iI0ZGNkI2QyIvPgogIDx0ZXh0IHg9IjE1MCIgeT0iMTUwIiBmb250LWZhbWlseT0iUXVpY2tzYW5kIiBmb250LXNpemU9IjI0IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkJ1YnUgJiBEdWR1PC90ZXh0PgogIDx0ZXh0IHg9IjE1MCIgeT0iMTgwIiBmb250LWZhbWlseT0iUXVpY2tzYW5kIiBmb250LXNpemU9IjE2IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPuOAk+OAkSA8L3RleHQ+Cjwvc3ZnPg==
+<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="300" height="300" fill="#FFB6C1"/>
+  <circle cx="100" cy="150" r="40" fill="#8B4513"/>
+  <circle cx="200" cy="150" r="40" fill="white"/>
+  <circle cx="100" cy="130" r="5" fill="black"/>
+  <circle cx="200" cy="130" r="5" fill="black"/>
+  <path d="M100 170 Q 90 180 100 190 T 110 180" stroke="black" stroke-width="2" fill="none"/>
+  <path d="M200 170 Q 190 180 200 190 T 210 180" stroke="black" stroke-width="2" fill="none"/>
+  <path d="M100 180 Q 150 190 200 180" stroke="#FF69B4" stroke-width="3" fill="none"/>
+  <text x="150" y="250" font-family="Arial" font-size="18" fill="#FF69B4" text-anchor="middle">💕</text>
+</svg>

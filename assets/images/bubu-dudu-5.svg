@@ -1,1 +1,12 @@
-data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iI0ZGQ0VGRiIvPgogIDxjaXJjbGUgY3g9IjEwMCIgY3k9IjE0MCIgcj0iMzUiIGZpbGw9IiM4QjQ1MTMiLz4KICA8Y2lyY2xlIGN4PSIyMDAiIGN5PSIxNDAiIHI9IjM1IiBmaWxsPSIjRkZGRkZGIi8+CiAgPGNpcmNsZSBjeD0iMTAwIiBjeT0iMTI1IiByPSI0IiBmaWxsPSJibGFjayIvPgogIDxjaXJjbGUgY3g9IjIwMCIgY3k9IjEyNSIgcj0iNCIgZmlsbD0iYmxhY2siLz4KICA8cGF0aCBkPSJNMTAwIDE1NSBRIDkwIDE2NSAxMDAgMTc1IFQgMTEwIDE2NSIgc3Ryb2tlPSJibGFjayIgc3Ryb2tlLXdpZHRoPSIyIiBmaWxsPSJub25lIi8+CiAgPHBhdGggZD0iTTIwMCAxNTUgUTE5MCAxNjUgMjAwIDE3NSBUIDIxMCAxNjUiIHN0cm9rZT0iYmxhY2siIHN0cm9rZS13aWR0aD0iMiIgZmlsbD0ibm9uZSIvPgogIDxwYXRoIGQ9Ik0xMDAgMTgwIFE5MCAxOTAgMTAwIDIwMCBUIDExMCAxOTAiIHN0cm9rZT0iI0ZGNkI2QyIgc3Ryb2tlLXdpZHRoPSIzIiBmaWxsPSJub25lIi8+CiAgPHBhdGggZD0iTTIwMCAxODAgUTE5MCAxOTAgMjAwIDIwMCBUMjEwIDE5MCIgc3Ryb2tlPSIjRkY2QjZDIiBzdHJva2Utd2lkdGg9IjMiIGZpbGw9Im5vbmUiLz4KICA8dGV4dCB4PSIxNTAiIHk9IjI0MCIgZm9udC1mYW1pbHk9IlF1aWNrc2FuZCIgZm9udC1zaXplPSIxNiIgZmlsbD0iI0ZGNkI2QyIgdGV4dC1hbmNob3I9Im1pZGRsZSI+4oCmIOKAnjwvdGV4dD4KPC9zdmc+
+<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="300" height="300" fill="#FFDEAD"/>
+  <circle cx="110" cy="140" r="35" fill="#8B4513"/>
+  <circle cx="190" cy="140" r="35" fill="white"/>
+  <circle cx="110" cy="125" r="4" fill="black"/>
+  <circle cx="190" cy="125" r="4" fill="black"/>
+  <path d="M110 155 Q 100 165 110 175 T 120 165" stroke="black" stroke-width="2" fill="none"/>
+  <path d="M190 155 Q 180 165 190 175 T 200 165" stroke="black" stroke-width="2" fill="none"/>
+  <path d="M110 175 Q 190 185 190 175" stroke="#FF69B4" stroke-width="3" fill="none"/>
+  <circle cx="150" cy="190" r="8" fill="#FF69B4"/>
+  <text x="150" y="235" font-family="Arial" font-size="16" fill="#FF69B4" text-anchor="middle">💕</text>
+</svg>
