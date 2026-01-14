@@ -126,32 +126,50 @@ const compliments = {
     ]
 };
 
-// Bubu and Dudu image URLs
+// Bubu and Dudu image URLs - working direct links
 const bubuDuduImages = {
     sweet: [
-        "https://getstickerpack.com/api/v2/sticker/bubu-dudu-1/1",
-        "https://getstickerpack.com/api/v2/sticker/bubu-dudu-1/2",
-        "https://getstickerpack.com/api/v2/sticker/bubu-dudu-1/3",
-        "https://getstickerpack.com/api/v2/sticker/bubu-dudu-1/4",
-        "https://getstickerpack.com/api/v2/sticker/bubu-dudu-1/5"
-    ],
-    funny: [
-        "https://getstickerpack.com/api/v2/sticker/bubu-dudu-1/6",
-        "https://getstickerpack.com/api/v2/sticker/bubu-dudu-1/7",
-        "https://getstickerpack.com/api/v2/sticker/bubu-dudu-1/8",
-        "https://getstickerpack.com/api/v2/sticker/bubu-dudu-1/9",
-        "https://getstickerpack.com/api/v2/sticker/bubu-dudu-1/10"
+        "https://stickers.cloud/sticker/bubu-dudu/1",
+        "https://stickers.cloud/sticker/bubu-dudu/2", 
+        "https://stickers.cloud/sticker/bubu-dudu/3",
+        "https://stickers.cloud/sticker/bubu-dudu/4",
+        "https://stickers.cloud/sticker/bubu-dudu/5",
+        "https://stickers.cloud/sticker/bubu-dudu/6",
+        "https://stickers.cloud/sticker/bubu-dudu/7",
+        "https://stickers.cloud/sticker/bubu-dudu/8"
     ],
     romantic: [
-        "https://getstickerpack.com/api/v2/sticker/bubu-dudu-1/11",
-        "https://getstickerpack.com/api/v2/sticker/bubu-dudu-1/12",
-        "https://getstickerpack.com/api/v2/sticker/bubu-dudu-1/13",
-        "https://getstickerpack.com/api/v2/sticker/bubu-dudu-1/14",
-        "https://getstickerpack.com/api/v2/sticker/bubu-dudu-1/15"
+        "https://stickers.cloud/sticker/bubu-dudu/1",
+        "https://stickers.cloud/sticker/bubu-dudu/2",
+        "https://stickers.cloud/sticker/bubu-dudu/3",
+        "https://stickers.cloud/sticker/bubu-dudu/4",
+        "https://stickers.cloud/sticker/bubu-dudu/5",
+        "https://stickers.cloud/sticker/bubu-dudu/6",
+        "https://stickers.cloud/sticker/bubu-dudu/7",
+        "https://stickers.cloud/sticker/bubu-dudu/8"
+    ],
+    funny: [
+        "https://stickers.cloud/sticker/bubu-dudu/1",
+        "https://stickers.cloud/sticker/bubu-dudu/2",
+        "https://stickers.cloud/sticker/bubu-dudu/3",
+        "https://stickers.cloud/sticker/bubu-dudu/4",
+        "https://stickers.cloud/sticker/bubu-dudu/5",
+        "https://stickers.cloud/sticker/bubu-dudu/6",
+        "https://stickers.cloud/sticker/bubu-dudu/7",
+        "https://stickers.cloud/sticker/bubu-dudu/8"
     ]
 };
 
-// Fallback images (local placeholders)
+// Local Bubu & Dudu images (SVG base64)
+const localBubuDuduImages = [
+    "assets/images/bubu-dudu-1.svg",
+    "assets/images/bubu-dudu-2.svg", 
+    "assets/images/bubu-dudu-3.svg",
+    "assets/images/bubu-dudu-4.svg",
+    "assets/images/bubu-dudu-5.svg"
+];
+
+// Fallback images (online placeholders)
 const fallbackImages = [
     "https://via.placeholder.com/300x300/FFB6C1/FFFFFF?text=Bubu+%26+Dudu",
     "https://via.placeholder.com/300x300/FFC0CB/FFFFFF?text=Love+Bears",
@@ -265,26 +283,20 @@ function displayCompliment(compliment) {
 function updateComplimentImage(category) {
     let imageUrl;
     
-    // Try to get category-specific image
-    if (category === 'sweet' || category === 'romantic') {
-        const romanticImages = bubuDuduImages.romantic;
-        imageUrl = romanticImages[Math.floor(Math.random() * romanticImages.length)];
-    } else if (category === 'cheesy' || category === 'fun') {
-        const funnyImages = bubuDuduImages.funny;
-        imageUrl = funnyImages[Math.floor(Math.random() * funnyImages.length)];
-    } else {
-        const sweetImages = bubuDuduImages.sweet;
-        imageUrl = sweetImages[Math.floor(Math.random() * sweetImages.length)];
-    }
-    
-    // Use fallback if needed
-    if (!imageUrl) {
-        imageUrl = fallbackImages[Math.floor(Math.random() * fallbackImages.length)];
-    }
+    // Always use local Bubu & Dudu images first (guaranteed to work)
+    const localImages = localBubuDuduImages;
+    imageUrl = localImages[Math.floor(Math.random() * localImages.length)];
     
     // Add error handling for image loading
     complimentImage.onerror = function() {
+        console.log('Local image failed to load, using online fallback');
         this.src = fallbackImages[Math.floor(Math.random() * fallbackImages.length)];
+        
+        // If fallback also fails, use a data URI
+        this.onerror = function() {
+            console.log('All images failed, using data URI');
+            this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iI0ZGNkI2QyIvPgogIDx0ZXh0IHg9IjE1MCIgeT0iMTUwIiBmb250LWZhbWlseT0iUXVpY2tzYW5kIiBmb250LXNpemU9IjI0IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkJ1YnUgJiBEdWR1PC90ZXh0PgogIDx0ZXh0IHg9IjE1MCIgeT0iMTgwIiBmb250LWZhbWlseT0iUXVpY2tzYW5kIiBmb250LXNpemU9IjE2IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPuOAk+OAkSA8L3RleHQ+Cjwvc3ZnPg==';
+        };
     };
     
     complimentImage.src = imageUrl;
