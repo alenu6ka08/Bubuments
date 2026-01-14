@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bubu & Dudu Compliments</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">Bubu & Dudu's Sweet Compliments</h1>
+            <p class="subtitle">Daily doses of love and cuteness</p>
+        </header>
+
+        <main class="main-content">
+            <div class="compliment-card" id="complimentCard">
+                <div class="image-container" id="imageContainer">
+                    <img src="https://via.placeholder.com/300x300/FFB6C1/FFFFFF?text=Bubu+%26+Dudu" alt="Bubu and Dudu" class="compliment-image" id="complimentImage">
+                </div>
+                <div class="text-container">
+                    <p class="compliment-text" id="complimentText">
+                        Click the button below to get your daily compliment!
+                    </p>
+                    <p class="compliment-translation" id="complimentTranslation"></p>
+                </div>
+            </div>
+
+            <div class="button-container">
+                <button class="compliment-btn" id="complimentBtn">
+                    Find out what Bubu says to you today
+                </button>
+            </div>
+
+            <div class="stats-container">
+                <div class="stat-item">
+                    <span class="stat-number" id="complimentCount">0</span>
+                    <span class="stat-label">Compliments Given</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="favoriteCount">0</span>
+                    <span class="stat-label">Favorites</span>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="action-btn" id="favoriteBtn">
+                    <span class="btn-icon">❤️</span>
+                    <span class="btn-text">Add to Favorites</span>
+                </button>
+                <button class="action-btn" id="shareBtn">
+                    <span class="btn-icon">📤</span>
+                    <span class="btn-text">Share</span>
+                </button>
+                <button class="action-btn" id="historyBtn">
+                    <span class="btn-icon">📜</span>
+                    <span class="btn-text">History</span>
+                </button>
+            </div>
+        </main>
+
+        <div class="modal" id="historyModal">
+            <div class="modal-content">
+                <span class="close-btn" id="closeModal">&times;</span>
+                <h3>Recent Compliments</h3>
+                <div class="history-list" id="historyList"></div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>Made with 💕 for someone special</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
